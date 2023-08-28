@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class CircluarMove : Move
+public class CircularMove : Move
 {
 	[SerializeField][FloatProperty("Radius")][Range(0, 6f)] private float radius = 1f;
 	public float Radius
@@ -28,7 +28,7 @@ public class CircluarMove : Move
 
 	public override void ObjectUpdate(float deltaTime)
 	{
-		float deltaAngle = 0f;
+		float deltaAngle;
 		if(byTime && time != 0f)
 		{
 			var angularSpeedByTime = (360f / time);

@@ -5,7 +5,7 @@ using System.ComponentModel;
 using UnityEditor;
 using UnityEngine;
 
-public class CircluarMoveTF : Move
+public class CircularMoveTF : Move
 {
 	[SerializeField][FloatProperty("Radius")][Range(0, 6f)] private float radius = 1f;
 	public float Radius
