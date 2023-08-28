@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public class UpdateObject : MonoBehaviour
 {
     public bool paused = false;
 
-    void Start()
+    protected virtual void Start()
     {
         if(UpdateManager.Instance == null)
         {
@@ -15,10 +16,18 @@ public class UpdateObject : MonoBehaviour
             return;
         }
 
-    }
+        UpdateManager.Instance.objects.Add(this);
+	}
 
-    public virtual void ObjectUpdate(float deltaTime) { }
+	protected virtual void OnDestroy()
+    {
+        if(UpdateManager.Instance)
+		    UpdateManager.Instance.objects.Remove(this);
+	}
 
-	[ContextMenu("ContextTest")]
-	public void ContextTest() { }
+
+    public virtual void ObjectUpdate(float deltaTime) {}
+	[Button("Restart")]
+	[SerializeField] private bool restart = false;
+	public virtual void Restart() { }
 }

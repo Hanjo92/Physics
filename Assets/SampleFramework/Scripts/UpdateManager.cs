@@ -7,19 +7,28 @@ public class UpdateManager : MonoBehaviour
     private static UpdateManager instance;
     public static UpdateManager Instance => instance;
 
-	[ToggleButton("Paused")]
-	[SerializeField] private bool mPaused = false;
-	public bool Paused {
+	[Range(0f, 10f)] public float timeScale = 1f;
+	public List<UpdateObject> objects = new List<UpdateObject>();
+
+	[ToggleButton("Paused")][SerializeField] private bool mPaused = false;
+	public bool Paused
+	{
 		get => mPaused;
 		set
 		{
 			Debug.Log($"Change :: Current {mPaused}");
 			mPaused = value;
-		} 
+		}
 	}
 
-	[Range(0f, 10f)] public float timeScale = 1f;
-	public List<UpdateObject> objects = new List<UpdateObject>();
+	[Button("Restart")][SerializeField] private bool restart = false;
+	public void Restart()
+	{
+		foreach(var obj in objects)
+		{
+			obj.Restart();
+		}
+	}
 
 	private void Awake()
 	{
