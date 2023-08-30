@@ -12,3 +12,9 @@
 [원운동 방법 관련 데모](https://seunghus.tistory.com/95)
 
 ![image](https://github.com/Hanjo92/Physics/assets/26320361/4c7e1519-dfc4-46a2-84d5-9b628176b1ac)
+
+# Acceleration Move
+
+[등가속도 관련 데모](https://seunghus.tistory.com/98)
+
+![image](https://github.com/Hanjo92/Physics/assets/26320361/393fbaf8-a796-4b7c-99f2-00b3597d4bee)
