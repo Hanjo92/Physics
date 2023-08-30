@@ -44,7 +44,7 @@ public class RangeFloatPropertyDrawer : PropertyDrawer
 }
 #endif
 
-[AttributeUsage(AttributeTargets.Field, AllowMultiple = true)]
+[AttributeUsage(AttributeTargets.Field)]
 public class RangeFloatPropertyAttribute : PropertyAttribute
 {
 	public string TargetName { get; }

@@ -49,7 +49,6 @@ public class CircularMove : Move
 	public override void Restart()
 	{
 		base.Restart();
-		transform.position = startPos;
 		transform.position += Vector3.right * Radius;
 	}
 }
