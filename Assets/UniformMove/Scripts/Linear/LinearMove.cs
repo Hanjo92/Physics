@@ -5,18 +5,28 @@ using UnityEngine;
 
 public class LinearMove : Move
 {
-	public float speed = 0.5f;
+	[SerializeField][FloatProperty("StartSpeed")] private float startSpeed = 0.5f;
+	public float StartSpeed
+	{
+		get => startSpeed;
+		set
+		{
+			startSpeed = value;
+			Restart();
+		}
+	}
+
 	public Vector3 direction = Vector3.forward;
 
 	public override void ObjectUpdate(float deltaTime)
 	{
 		if(paused) return;
 
-		var fDistance = speed * deltaTime;
+		var fDistance = StartSpeed * deltaTime;
 		transform.Translate(direction * fDistance);
 		
 		// for demo
-		if(transform.position.z > 16)
+		if(transform.position.z > MaxDistance)
 			Restart();
 	}
 
@@ -25,11 +35,5 @@ public class LinearMove : Move
 	{
 		Gizmos.color = Color.green;
 		Gizmos.DrawRay(transform.position, direction);
-	}
-
-	public override void Restart()
-	{
-		base.Restart();
-		transform.position = startPos;
 	}
 }

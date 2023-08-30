@@ -53,7 +53,7 @@ public class FloatPropertyDrawer : PropertyDrawer
 }
 #endif
 
-[AttributeUsage(AttributeTargets.Field, AllowMultiple = true)]
+[AttributeUsage(AttributeTargets.Field, Inherited = true)]
 public class FloatPropertyAttribute : PropertyAttribute
 {
 	public string TargetName
