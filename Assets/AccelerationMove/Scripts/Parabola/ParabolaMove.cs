@@ -6,7 +6,7 @@ using UnityEngine;
 public class ParabolaMove : LinearAccelMove
 {
 	public const float DropYPos = 0;
-	protected Vector3 normalizeDir => direction.normalized;
+	protected virtual Vector3 normalizeDir => direction.normalized;
 	protected float StartYSpeed => (normalizeDir * StartSpeed).y;
 
 	public override void ObjectUpdate(float deltaTime)

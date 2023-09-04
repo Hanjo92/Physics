@@ -16,8 +16,6 @@ public class LinearMove : Move
 		}
 	}
 
-	public Vector3 direction = Vector3.forward;
-
 	public override void ObjectUpdate(float deltaTime)
 	{
 		if(paused) return;
