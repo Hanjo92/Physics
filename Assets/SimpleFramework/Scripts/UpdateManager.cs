@@ -30,6 +30,8 @@ public class UpdateManager : MonoBehaviour
 		}
 	}
 
+	private SimplePool SimplePool { get; set; }
+
 	private void Awake()
 	{
 		if(Instance)
@@ -39,6 +41,7 @@ public class UpdateManager : MonoBehaviour
 			instance = this;
 			DontDestroyOnLoad(gameObject);
 		}
+
 	}
 	void Update()
     {

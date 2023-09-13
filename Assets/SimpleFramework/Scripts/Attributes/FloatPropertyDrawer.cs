@@ -20,6 +20,7 @@ public class FloatPropertyDrawer : PropertyDrawer
 		var propertyName = fieldAttribute.TargetName;
 		var target = property.serializedObject.targetObject;
 		var type = target.GetType();
+		var t = property.propertyType.GetType();
 
 		var targetProperty = type.GetProperty(propertyName);
 		if(targetProperty != null)
