@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.Video;
 
 public class MeetPointDemo : MonoBehaviour
 {
@@ -12,15 +8,28 @@ public class MeetPointDemo : MonoBehaviour
 	public Vector3 lineAcrossPoint = Vector3.zero;
 	public float meetPointSize = 0.1f;
 
+	public Transform point1;
+	public Transform point2;
+
 	private void OnDrawGizmos()
 	{
-		Gizmos.color = Color.white * 0.5f;
-		Gizmos.DrawSphere(transform.position, radius);
-		Gizmos.color = Color.white;
-		Gizmos.DrawRay(lineAcrossPoint, LineNormal * 100);
-		Gizmos.DrawRay(lineAcrossPoint, -LineNormal * 100);
+		var p = lineAcrossPoint;
+		var v = LineNormal;
+		var r = radius;
+		if(point1 && point2)
+		{
+			p = point1.position;
+			v = (point2.position - point1.position).normalized;
+			r = Vector3.Distance(point2.position, point1.position);
+		}
 
-		var state = MeetPointCalculator.Calculate(transform.position, radius, lineAcrossPoint, LineNormal, out var meetPoints);
+		Gizmos.color = Color.white * 0.5f;
+		Gizmos.DrawSphere(transform.position, r);
+		Gizmos.color = Color.white;
+		Gizmos.DrawRay(p, v * 100);
+		Gizmos.DrawRay(p, -v * 100);
+
+		var state = MeetPointCalculator.Calculate(transform.position, r, p, v, out var meetPoints);
 		switch(state)
 		{
 			case MeetPointCalculator.State.Zero:
